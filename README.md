@@ -1,32 +1,10 @@
-# ENI Globalization Solution
+# ENI Back-end Globalization Solution
 
-ENI uses VMWare Singleton solution for globalization: [https://github.com/vmware/singleton](https://github.com/vmware/singleton).
-
-
-## Front-end
-
-The front-end part use Singleton Angular client(@vmw/ngx-vip) to provide globalization support.
-
-### Configuration File
-
-./loupestash/ui/ng2-app/libs/eni-infrastructure/l10n/src/lib/eni-ui-vip.config.ts
-
-### Resource Files
-- ./loupestash/ui/ng2-app/libs/eni-hybrid/src/lib/l10n/eni-backend.l10n.ts
-- ./loupestash/ui/ng2-app/libs/eni-infrastructure/l10n/src/lib/eni-ui.app.l10n.ts
-
-## Source Collection
-
-Refer to /loupestash/ui/ng2-app/docs/l10n.md.
-
-
-## Back-end
-
-The back-end globalization includes two parts RB(ERB) and JSON.
+The back-end globalization  solution includes RB(ERB) files and JSON files.
 
 ### RB(ERB)
 
-The RB(ERB) files' localization integrates with Singleton Ruby client to provide support.
+The RB(ERB) files' localization integrates with Singleton Ruby client(gem 'singleton-client') to provide support, the integration codes are defined in ./loupestash/ui/lib/g11n/g11n.rb
 
 #### Configuration File
 
@@ -34,35 +12,45 @@ The RB(ERB) files' localization integrates with Singleton Ruby client to provide
 
 #### Resource Files
 
-Please refer to ./loupestash/ui/config/sgtnclient.yml about the file paths.
-
-### Source Collection
-
-Refer to ./loupestash/tools/vip-scanner/README.md
-
-### JSON
-
-Refer to https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design about the solution and design.
-
-The JSON files' localization is custimized: the sources are moved to front-end, on run-time i to  on run-time call, it needs two steps:
-
-Step 1: run parsers to generate the resource source files
-
-Step 2: run scripts to move the source files to front-end file.
-
-#### String Externalization
-
-Refer to /loupestash/tools/i18n/README.md about how to run scripts to extract the sources.
-
-By default, just run 'generate-i18n' task( in file ./loupestash/ui/Makefile) which can run all python tasks to extract the sources, please submit the latest generated. sources to code repo.
+Please refer ./loupestash/ui/config/sgtnclient.yml about the resource file's definition.
 
 #### Source Collection
 
-Refer to ./loupestash/tools/vip-scanner/README.md
+Refer ./loupestash/tools/vip-scanner/README.md
 
+### JSON
+
+Refer https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design about the solution and design.
+
+#### String Externalization
+
+Refer /loupestash/tools/i18n/README.md about how to run scripts to extract the sources.
+
+By default, just run 'generate-i18n' task defined in file ./loupestash/ui/Makefile, after running please submit the latest generated sources to code repo.
+
+#### Source Collection
+
+Refer ./loupestash/tools/vip-scanner/README.md
 
 ## Troubleshooting
 
+Check the log file generated in the root path, e.g. /loupestash/ui/sgtnclient_d.log
+
 ## local Testing
 
+Put the localized bundle files to './loupestash/ui/config/translations/ENI/1.0.0' file for the debugged component and locale, e.g. define a Simplified Chinese bundle file with name 'messages_zh-Hans.json' and put it under './loupestash/ui/config/translations/ENI/1.0.0/rb/', the content will be loaded to Simplified Chinese UI fo your local testing.
+
+
 ## Remote Testing
+
+Change the  parameter 'vip_server' to a remote host and 'bundle_mode' to 'online' on the configuration file, e.g.
+
+```  
+
+  # Singleton server
+  vip_server: http://g11n-vip-dev-1.eng.vmware.com:8090
+
+  # mode: online/offline
+  bundle_mode: online
+
+```  
