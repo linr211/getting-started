@@ -1,10 +1,10 @@
-# ENI Back-end Globalization Solution
+# ENI Back-end Localization Solution
 
-The back-end globalization  solution includes RB(ERB) files and JSON files.
+The back-end Localization  solution includes RB(ERB) files and JSON files.
 
-### RB(ERB)
+### RB(ERB) Files' Localization
 
-The RB(ERB) files' localization integrates with Singleton Ruby client(gem 'singleton-client') to provide globalization support, the integration codes are defined in ./loupestash/ui/lib/g11n/g11n.rb
+The RB(ERB) files' localization integrates with Singleton Ruby client(gem 'singleton-client') to provide globalization support, the integration codes are defined in [../ui/lib/g11n/g11n.rb]
 
 #### Singleton Ruby Client's Configuration File
 
@@ -18,7 +18,7 @@ Please refer the 'resource' part in file ./loupestash/ui/config/vip_scanner.json
 
 Refer the doc './loupestash/tools/vip-scanner/README.md'.
 
-### JSON
+### JSON Files' Localization
 
 Refer https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design about the solution and design.
 
