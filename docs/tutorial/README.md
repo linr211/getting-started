@@ -2,7 +2,7 @@
 
 The backend Localization includes RB(ERB) files and JSON files localization.
 
-## Localization for RB(ERB) Files
+## Localization for RB and ERB Files
 
 The RB(ERB) files' localization uses the way of integrating with Singleton Ruby client(gem 'singleton-client') which provides Localization support, the integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
 
