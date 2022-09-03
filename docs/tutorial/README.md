@@ -36,12 +36,12 @@ Refer [loupestash/tools/vip-scanner/README.md](../tools/i18n/README.md) about ho
 
 The source collection is same with RB(ERB).
 
-## How to Do Local I18n Testing
+## Local I18n Testing
 
 You need to manually prepare the bundle file and put it to 'loupestash/ui/config/translations/ENI/1.0.0', e.g. If you want to test localized strings in RB files, you need to define the bundle file with name 'messages_zh-Hans.json' and put it under './loupestash/ui/config/translations/ENI/1.0.0/rb/', the file's content will be loaded to Simplified Chinese UI as for your local testing.
 
 
-## How to Do Remote I18n Testing
+## Remote I18n Testing
 
 Change the parameter 'vip_server' and 'bundle_mode' on the configuration file to connect remote Singleton instance for translation, e.g.
 
