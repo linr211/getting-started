@@ -1,22 +1,22 @@
-# ENI Back-end Localization
+# ENI Backend Localization
 
-The back-end Localization includes RB(ERB) files and JSON files localization.
+The backend Localization includes RB(ERB) files and JSON files localization.
 
 ## Localization for RB(ERB) Files
 
-The RB(ERB) files' localization use the way of integrating with Singleton Ruby client(gem 'singleton-client') which provides Localization support, the integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
+The RB(ERB) files' localization uses the way of integrating with Singleton Ruby client(gem 'singleton-client') which provides Localization support, the integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
 
 ### Singleton Ruby Client's Configuration File
 
-The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the setting for communication with Singleton service instance.
+The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the settings for communication with Singleton service instance.
 
 ### Where to Define Resource Files
 
-Please refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All the resource files defined here will can be collected by vip_scanner to Singleton service as the sources.
+Refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All the resource files defined in vip_scanner.json will can be collected for translation by the vip_scanner.
 
 ### How to Do Source Collection
 
-Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md) file about how to run the scripts to do source collection.
+Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md) file about how to run the tool to do source collection.
 
 ## Localization for JSON Files
 
@@ -32,14 +32,16 @@ Note: the task 'generate-i18n' will be also executed by run 'make-bootstrap' in 
 
 ### How to Do Source Collection
 
-Refer [loupestash/tools/vip-scanner/README.md](../tools/i18n/README.md) about how to run scripts to do source collection.
+Refer [loupestash/tools/vip-scanner/README.md](../tools/i18n/README.md) about how to run the scripts to generate the sources.
 
-## How to Do Local Globalization Testing
+The source collection is same with RB(ERB).
+
+## How to Do Local I18n Testing
 
 You need to manually prepare the bundle file and put it to 'loupestash/ui/config/translations/ENI/1.0.0', e.g. If you want to test localized strings in RB files, you need to define the bundle file with name 'messages_zh-Hans.json' and put it under './loupestash/ui/config/translations/ENI/1.0.0/rb/', the file's content will be loaded to Simplified Chinese UI as for your local testing.
 
 
-## How to Do Remote Globalization Testing
+## How to Do Remote I18n Testing
 
 Change the parameter 'vip_server' and 'bundle_mode' on the configuration file to connect remote Singleton instance for translation, e.g.
 
