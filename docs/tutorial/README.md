@@ -2,7 +2,7 @@
 
 The back-end Localization includes RB(ERB) files and JSON files localization.
 
-## RB(ERB) Files' Localization
+## Localization for RB(ERB) Files
 
 The RB(ERB) files' localization use the way of integrating with Singleton Ruby client(gem 'singleton-client') which provides Localization support, the integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
 
@@ -10,19 +10,19 @@ The RB(ERB) files' localization use the way of integrating with Singleton Ruby c
 
 The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the setting for communication with Singleton service instance.
 
-### Resource Files
+### Where to Define Resource Files
 
 Please refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All the resource files defined here will can be collected by vip_scanner to Singleton service as the sources.
 
-### Source Collection
+### How to Do Source Collection
 
 Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md) file about how to run the scripts to do source collection.
 
-## JSON Files' Localization
+## Localization for JSON Files
 
 Refer the [JSON Globalization Design](https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design) document about how to implement the JSON files's localization.
 
-### String Externalization
+### How to Externalize the Source from JSON Files
 
 Refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run scripts to extract the sources.
 
@@ -30,20 +30,16 @@ By default, you can just run 'generate-i18n' task defined in the [makefile file]
 
 Note: the task 'generate-i18n' will be also executed by run 'make-bootstrap' in the building process.
 
-### Source Collection
+### How to Do Source Collection
 
 Refer [loupestash/tools/vip-scanner/README.md](../tools/i18n/README.md) about how to run scripts to do source collection.
 
-## Troubleshooting
-
-Check the log file generated in the root path(e.g. /loupestash/ui/sgtnclient_d.log), the logs are produced by Singleton ruby client in every client's API call.
-
-## Local Testing
+## How to Do Local Globalization Testing
 
 You need to manually prepare the bundle file and put it to 'loupestash/ui/config/translations/ENI/1.0.0', e.g. If you want to test localized strings in RB files, you need to define the bundle file with name 'messages_zh-Hans.json' and put it under './loupestash/ui/config/translations/ENI/1.0.0/rb/', the file's content will be loaded to Simplified Chinese UI as for your local testing.
 
 
-## Remote Testing
+## How to Do Remote Globalization Testing
 
 Change the parameter 'vip_server' and 'bundle_mode' on the configuration file to connect remote Singleton instance for translation, e.g.
 
@@ -57,3 +53,8 @@ Change the parameter 'vip_server' and 'bundle_mode' on the configuration file to
 
 ```  
 With this change, the localized content will be loaded from g11n-vip-dev-1.eng.vmware.com instance by the ruby client for your testing, your local translations under '/loupestash/ui/config/translations/ENI/1.0.0' won't be used.
+
+
+## Troubleshooting
+
+Check the log file generated in the root path(e.g. /loupestash/ui/sgtnclient_d.log), the logs are produced by Singleton ruby client in every client's API call.
