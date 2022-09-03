@@ -4,7 +4,7 @@ The back-end Localization  solution includes RB(ERB) files and JSON files.
 
 ### RB(ERB) Files' Localization
 
-The RB(ERB) files' localization integrates with Singleton Ruby client(gem 'singleton-client') to provide globalization support, the integration codes are defined in [../ui/lib/g11n/g11n.rb]
+The RB(ERB) files' localization integrates with Singleton Ruby client(gem 'singleton-client') to provide globalization support, the integration codes are defined in [g11n.rb](../ui/lib/g11n/g11n.rb)
 
 #### Singleton Ruby Client's Configuration File
 
