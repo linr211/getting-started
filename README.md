@@ -1,42 +1,68 @@
-# Docker Getting Started Tutorial
+# ENI Globalization Solution
 
-This tutorial has been written with the intent of helping folks get up and running
-with containers and is designed to work with Docker Desktop. While not going too much 
-into depth, it covers the following topics:
+ENI uses VMWare Singleton solution for globalization: [https://github.com/vmware/singleton](https://github.com/vmware/singleton).
 
-- Running your first container
-- Building containers
-- Learning what containers are running and removing them
-- Using volumes to persist data
-- Using bind mounts to support development
-- Using container networking to support multi-container applications
-- Using Docker Compose to simplify the definition and sharing of applications
-- Using image layer caching to speed up builds and reduce push/pull size
-- Using multi-stage builds to separate build-time and runtime dependencies
 
-## Getting Started
+## Front-end
 
-If you wish to run the tutorial, you can use the following command after installing Docker Desktop:
+The front-end part use Singleton Angular client(@vmw/ngx-vip) to provide globalization support.
 
-```bash
-docker run -d -p 80:80 docker/getting-started
-```
+### Configuration File
 
-Once it has started, you can open your browser to [http://localhost](http://localhost).
+./loupestash/ui/ng2-app/libs/eni-infrastructure/l10n/src/lib/eni-ui-vip.config.ts
 
-## Development
+### Resource Files
+- ./loupestash/ui/ng2-app/libs/eni-hybrid/src/lib/l10n/eni-backend.l10n.ts
+- ./loupestash/ui/ng2-app/libs/eni-infrastructure/l10n/src/lib/eni-ui.app.l10n.ts
 
-This project has a `docker-compose.yml` file, which will start the mkdocs application on your
-local machine and help you see changes instantly.
+## Source Collection
 
-```bash
-docker-compose up
-```
+Refer to /loupestash/ui/ng2-app/docs/l10n.md.
 
-## Contributing
 
-If you find typos or other issues with the tutorial, feel free to create a PR and suggest fixes!
+## Back-end
 
-If you have ideas on how to make the tutorial better or new content, please open an issue first before working on your idea. While we love input, we want to keep the tutorial  scoped to newcomers.
-As such, we may reject ideas for more advanced requests and don't want you to lose any work you might
-have done. So, ask first and we'll gladly hear your thoughts!
+The back-end globalization includes two parts RB(ERB) and JSON.
+
+### RB(ERB)
+
+The RB(ERB) files' localization integrates with Singleton Ruby client to provide support.
+
+#### Configuration File
+
+./loupestash/ui/config/sgtnclient.yml
+
+#### Resource Files
+
+Please refer to ./loupestash/ui/config/sgtnclient.yml about the file paths.
+
+### Source Collection
+
+Refer to ./loupestash/tools/vip-scanner/README.md
+
+### JSON
+
+Refer to https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design about the solution and design.
+
+The JSON files' localization is custimized: the sources are moved to front-end, on run-time i to  on run-time call, it needs two steps:
+
+Step 1: run parsers to generate the resource source files
+
+Step 2: run scripts to move the source files to front-end file.
+
+#### String Externalization
+
+Refer to /loupestash/tools/i18n/README.md about how to run scripts to extract the sources.
+
+By default, just run 'generate-i18n' task( in file ./loupestash/ui/Makefile) which can run all python tasks to extract the sources, please submit the latest generated. sources to code repo.
+
+#### Source Collection
+
+Refer to ./loupestash/tools/vip-scanner/README.md
+
+
+## Troubleshooting
+
+## local Testing
+
+## Remote Testing
