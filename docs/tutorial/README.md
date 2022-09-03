@@ -2,27 +2,27 @@
 
 The back-end Localization includes RB(ERB) files and JSON files localization.
 
-### RB(ERB) Files' Localization
+## RB(ERB) Files' Localization
 
 The RB(ERB) files' localization use the way of integrating with Singleton Ruby client(gem 'singleton-client') which provides Localization support, the integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
 
-#### Singleton Ruby Client's Configuration File
+### Singleton Ruby Client's Configuration File
 
 The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the setting for communication with Singleton service instance.
 
-#### Resource Files
+### Resource Files
 
 Please refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All the resource files defined here will can be collected by vip_scanner to Singleton service as the sources.
 
-#### Source Collection
+### Source Collection
 
 Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md) file about how to run the scripts to do source collection.
 
-### JSON Files' Localization
+## JSON Files' Localization
 
 Refer the [JSON Globalization Design](https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design) document about how to implement the JSON files's localization.
 
-#### String Externalization
+### String Externalization
 
 Refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run scripts to extract the sources.
 
@@ -30,7 +30,7 @@ By default, you can just run 'generate-i18n' task defined in the [makefile file]
 
 Note: the task 'generate-i18n' will be also executed by run 'make-bootstrap' in the building process.
 
-#### Source Collection
+### Source Collection
 
 Refer [loupestash/tools/vip-scanner/README.md](../tools/i18n/README.md) about how to run scripts to do source collection.
 
