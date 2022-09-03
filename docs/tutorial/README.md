@@ -38,7 +38,7 @@ Check the log file generated in the root path, e.g. /loupestash/ui/sgtnclient_d.
 
 ## local Testing
 
-You need to manually prepared the bundle file and put it to [/loupestash/ui/config/translations/ENI/1.0.0](../ui/config/translations/ENI/1.0.0), e.g. If you want to test something in RB files, you need to define the bundle file with name 'messages_zh-Hans.json'( as example) and put it under './loupestash/ui/config/translations/ENI/1.0.0/rb/', the content will be loaded to Simplified Chinese UI for your local testing.
+You need to manually prepared the bundle file and put it to [loupestash/ui/config/translations/ENI/1.0.0](../ui/config/translations/ENI/1.0.0), e.g. If you want to test something in RB files, you need to define the bundle file with name 'messages_zh-Hans.json'( as example) and put it under './loupestash/ui/config/translations/ENI/1.0.0/rb/', the content will be loaded to Simplified Chinese UI for your local testing.
 
 
 ## Remote Testing
