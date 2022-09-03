@@ -8,25 +8,25 @@ The RB(ERB) files' localization use the way of integrating with Singleton Ruby c
 
 #### Singleton Ruby Client's Configuration File
 
-[loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml)
+The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the setting for communication with Singleton service instance.
 
 #### Resource Files
 
-Please refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All resource files defined here will be collected by vip_scanner to Singleton service as the sources.
+Please refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All the resource files defined here will can be collected by vip_scanner to Singleton service as the sources.
 
 #### Source Collection
 
-Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md).
+Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md) file about how to run the scripts to do source collection.
 
 ### JSON Files' Localization
 
-Refer the [JSON Globalization Design](https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design).
+Refer the [JSON Globalization Design](https://confluence.eng.vmware.com/display/GQ/2.2+DB%28JSON%29+Gobalization+Design) document about how to implement the JSON files's localization.
 
 #### String Externalization
 
 Refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run scripts to extract the sources.
 
-By default, just run 'generate-i18n' task defined in the [makefile file](../ui/Makefile), after running please submit the latest generated properties under 'loupestash/resources/i18n/UI' to ENI code repo.
+By default, you can just run 'generate-i18n' task defined in the [makefile file](../ui/Makefile), when running job is done you could submit the latest generated properties under 'loupestash/resources/i18n/UI' to ENI code repo so that the updated source can be translated.
 
 Note: the task 'generate-i18n' will be also executed by run 'make-bootstrap' in the building process.
 
