@@ -1,6 +1,7 @@
 # ENI Backend Localization
 
-The backend Localization includes RB(ERB) files and JSON files localization.
+The backend Localization includes RB(ERB) files and JSON files localization. The RB(ERB) files leverage Singleton ruby client's API to implement localization; the JSON files's UI contents are not localized on backend directly on run-time, instead, localized on front-end.
+
 
 ## Localization for RB and ERB Files
 
@@ -8,15 +9,18 @@ The RB(ERB) files' localization is implemented by integrating with Singleton Rub
 
 ### Singleton Ruby Client's Configuration File
 
-The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the settings for communication with Singleton service instance.
+The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.yml](../ui/config/sgtnclient.yml) is used to define the settings for communicating with Singleton service instance.
 
 ### Where to Define Resource Files
 
-Refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and component definition. All the resource files defined in vip_scanner.json will can be collected for translation by the vip_scanner.
+Refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and components definition. 
+
+All the resource files defined in vip_scanner.json will can be collected for translation by the vip_scanner.
 
 ### How to Do Source Collection
 
 Refer the [loupestash/tools/vip-scanner/README.md](../tools/vip-scanner/README.md) file about how to run the tool to do source collection.
+
 
 ## Localization for JSON Files
 
@@ -24,17 +28,18 @@ Refer the [JSON Globalization Design](https://confluence.eng.vmware.com/display/
 
 ### How to Externalize the Source from JSON Files
 
-For new or update localizable sources added in the json files, please refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run scripts to extract the sources. 
+For new or updated localizable sources added in the json files, please refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run the scripts to extract the sources to properties files. By default, you can just run 'generate-i18n' task defined in the [makefile file](../ui/Makefile), when running the task done you could submit the latest generated properties file under 'loupestash/resources/i18n/UI' to ENI code repo so that the updated sources can be collected for translation.
 
-By default, you can just run 'generate-i18n' task defined in the [makefile file](../ui/Makefile), when running job is done you could submit the latest generated properties under 'loupestash/resources/i18n/UI' to ENI code repo so that the updated source can be translated.
-
-Notes: a)The task 'generate-i18n' will be also executed by run 'make-bootstrap' in the building process; b)If there's new JSON files, you need to add the parser to existing file 'loupestash/tools/i18n/json_prop_gen.py'.
+Notes: 
+a) The task 'generate-i18n' will be also executed by run 'make-bootstrap' in the building process;
+b) If there's new JSON file, you need to develop new parser on the existing file 'loupestash/tools/i18n/json_prop_gen.py' to extract the localizable content.
 
 ### How to Do Source Collection
 
 Refer [loupestash/tools/vip-scanner/README.md](../tools/i18n/README.md) about how to run the scripts to generate the sources.
 
-The source collection running is same with RB(ERB) part as above mention.
+The source collection running is same with RB(ERB) files' as mention above, it's just to run the scanner to do it.
+
 
 ## Local I18n Testing
 
@@ -55,6 +60,7 @@ For remote i18n testing, you needs to connect remote Singleton instance by chang
 
 ```  
 With this change, the localized content will be loaded from g11n-vip-dev-1.eng.vmware.com instance by the Singleton ruby client for your testing, your local translations under '/loupestash/ui/config/translations/ENI/1.0.0' won't be used.
+
 
 
 ## Troubleshooting
