@@ -5,7 +5,7 @@ The backend Localization includes RB(ERB) files and JSON files localization. The
 
 ## Localization for RB and ERB Files
 
-The RB(ERB) files' localization is implemented by integrating with Singleton Ruby client(gem 'singleton-client') which provides Localization support, the current integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
+The RB(ERB) files' localization is implemented by integrating with Singleton Ruby client(gem 'singleton-client') which provides localization support, the current integration codes are defined in [loupestash/ui/lib/g11n/g11n.rb](../ui/lib/g11n/g11n.rb)
 
 ### Singleton Ruby Client's Configuration File
 
@@ -13,7 +13,43 @@ The Singleton ruby client's configuration file [loupestash/ui/config/sgtnclient.
 
 ### Where to Define Resource Files
 
-Refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and components definition. 
+Refer the 'resource' part in file [loupestash/ui/config/vip_scanner.json](../ui/config/vip_scanner.json) about the resource files' path and components definition, e.g.
+
+```
+"resource": [
+        {
+            "parser": {
+                "escape": "strip,decode_with_continue",
+                "type": "properties"
+        },
+        "components": [
+            {
+            "component": "UI",
+            "path": [
+                "resources/i18n/UI/remediations.properties",
+                "resources/i18n/UI/analytics.properties",
+                "resources/i18n/UI/helps.properties"
+                ]
+            }
+            ]
+        },
+        {
+            "parser": {                                 
+                "type": "rubyyml"
+        },
+        "components": [{
+            "component": "erb",
+            "path": [
+                "ui/config/sources/erb/source.yml"  
+                ]},
+                {
+                    "component": "devise",
+                    "path": [
+                        "ui/config/locales/devise.en.yml"  
+                ]}
+            ]
+        }]
+```
 
 All the resource files defined in vip_scanner.json will can be collected for translation by the vip_scanner.
 
@@ -28,7 +64,20 @@ Refer the [JSON Globalization Design](https://confluence.eng.vmware.com/display/
 
 ### How to Externalize the Source from JSON Files
 
-For new or updated localizable sources added in the json files, please refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run the scripts to extract the sources to properties files. By default, you can just run 'generate-i18n' task defined in the [makefile file](../ui/Makefile), when running the task done you could submit the latest generated properties file under 'loupestash/resources/i18n/UI' to ENI code repo so that the updated sources can be collected for translation.
+For new or updated localizable sources added in the json files, please refer [loupestash/tools/i18n/README.md](../tools/i18n/README.md) about how to run the scripts to extract the sources to properties files. By default, you can just run 'generate-i18n' task defined in the [makefile file](../ui/Makefile), e.g.
+
+```
+generate-i18n:
+	python3 ../tools/i18n/json_prop_gen.py -c ../resources/i18n/UI -s ../resources/remediations/remediations.json -p remediations_res
+	python3 ../tools/i18n/json_prop_gen.py -c ../resources/i18n/UI -s ../ui/resources/generated/remediations.json -p remediations_gen
+	python3 ../tools/i18n/json_prop_gen.py -c ../resources/i18n/UI -s ../ui/resources/generated/analytics.json -p analytics
+	python3 ../tools/i18n/json_prop_gen.py -c ../resources/i18n/UI -s ../resources/helps/helps.json -p helps
+	python3 ../tools/i18n/ngx_json_gen.py -s ../resources/i18n/UI/remediations.properties -o ../ui/ng2-app/libs/eni-hybrid/src/lib/l10n/eni-backend.l10n.ts
+	python3 ../tools/i18n/ngx_json_gen.py -s ../resources/i18n/UI/analytics.properties -o ../ui/ng2-app/libs/eni-hybrid/src/lib/l10n/eni-backend.l10n.ts
+	python3 ../tools/i18n/ngx_json_gen.py -s ../resources/i18n/UI/helps.properties -o ../ui/ng2-app/libs/eni-hybrid/src/lib/l10n/eni-backend.l10n.ts
+```
+
+When it's done you could submit the latest generated properties file under 'loupestash/resources/i18n/UI' to ENI code repo so that the updated sources can be collected for translation
 
 Notes: 
 a) The task 'generate-i18n' will be also executed by run 'make-bootstrap' in the building process;
